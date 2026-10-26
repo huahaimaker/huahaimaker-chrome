@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>huahaimaker-chrome</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fafaf9; --card: #ffffff; --ink: #1c1917; --mute: #78716c; --line: rgba(0,0,0,.07);
+    --soft: rgba(0,0,0,.04); --ok: #16a34a; --warn: #d97706; --bad: #dc2626; --accent: #2563eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161616; --card: #1f1f1f; --ink: #f2f2f2; --mute: #a1a1aa; --line: rgba(255,255,255,.08);
+            --soft: rgba(255,255,255,.05); --ok: #22c55e; --warn: #f59e0b; --bad: #f87171; --accent: #60a5fa; }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 13px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  header { display: flex; align-items: center; gap: 10px; padding: 14px 16px 10px; }
+  header img { width: 30px; height: 30px; border-radius: 50%; }
+  header .t { font-weight: 600; font-size: 14px; }
+  header .v { color: var(--mute); font-size: 11px; margin-left: 4px; font-weight: 400; }
+  .pill { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--mute);
+          padding: 3px 9px; border-radius: 999px; background: var(--soft); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #a8a29e; flex: none; }
+  .dot.ok { background: var(--ok); } .dot.warn { background: var(--warn); } .dot.bad { background: var(--bad); }
+  main { padding: 0 12px 20px; display: flex; flex-direction: column; gap: 12px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  h2 { margin: 0 0 8px; font-size: 11px; letter-spacing: .8px; color: var(--mute); font-weight: 500; }
+  .empty { color: var(--mute); font-size: 12.5px; }
+  .owner { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .owner .sw { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .owner .who { font-weight: 600; }
+  .owner .code { color: var(--mute); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .blk { margin-top: 10px; }
+  .lab { font-size: 10.5px; letter-spacing: .6px; color: var(--mute); margin-bottom: 2px; }
+  /* agent 说的话带引用边，扩展观察到的事实平铺——前者可能源自被注入的页面 */
+  .intent { border-left: 2px solid var(--c, #888); padding-left: 8px; }
+  .ago { color: var(--mute); font-size: 10.5px; margin-left: 6px; font-variant-numeric: tabular-nums; }
+  .now { display: flex; align-items: center; gap: 7px; font-weight: 500; }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; animation: pulse 1.4s ease-in-out infinite; flex: none; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+  .tl { display: flex; flex-direction: column; gap: 3px; max-height: 260px; overflow-y: auto; }
+  .tl .row { display: flex; gap: 10px; font-size: 12px; color: var(--mute); }
+  .tl .row:first-child { color: var(--ink); }
+  .tl .row .ago { flex: none; width: 46px; text-align: right; margin: 0; }
+  .sess { display: flex; flex-direction: column; gap: 2px; }
+  .sess button { all: unset; display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin: 0 -8px;
+                 border-radius: 8px; cursor: pointer; font-size: 12.5px; }
+  .sess button:hover { background: var(--soft); }
+  .sess button[disabled] { cursor: default; }
+  .sess button[disabled]:hover { background: none; }
+  .sess .who { font-weight: 600; flex: none; }
+  .sess .page { color: var(--mute); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .light { display: flex; align-items: flex-start; gap: 9px; padding: 6px 0; }
+  .light .dot { margin-top: 6px; }
+  .light .name { font-weight: 500; }
+  .light .sub { color: var(--mute); font-size: 12px; }
+  .cmd { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+  code { font: 11.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--soft);
+         padding: 4px 7px; border-radius: 6px; word-break: break-all; flex: 1; }
+  button.btn { font: inherit; font-size: 12px; border: 0; border-radius: 7px; padding: 5px 10px; cursor: pointer;
+               background: var(--accent); color: #fff; flex: none; }
+  button.btn.ghost { background: var(--soft); color: var(--ink); }
+  button.btn:disabled { opacity: .45; cursor: default; }
+  .sw-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; }
+  .sw-row .txt { flex: 1; }
+  .sw-row .sub { color: var(--mute); font-size: 11.5px; }
+  .toggle { appearance: none; width: 34px; height: 20px; border-radius: 10px; background: #d6d3d1; position: relative;
+            cursor: pointer; flex: none; transition: background .15s; margin: 0; }
+  .toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%;
+                   background: #fff; transition: transform .15s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+  .toggle:checked { background: var(--ok); }
+  .toggle:checked::after { transform: translateX(14px); }
+  footer { color: var(--mute); font-size: 11.5px; padding: 0 16px 18px; }
+</style>
+
+<header>
+  <img src="icons/icon128.png" alt="" />
+  <div class="t">huahaimaker-chrome<span class="v" id="ver"></span></div>
+  <div class="pill"><span class="dot" id="pilldot"></span><span id="pilltxt">检查中…</span></div>
+</header>
+
+<main>
+  <section>
+    <h2>这一页</h2>
+    <div id="page"><div class="empty">读取中…</div></div>
+  </section>
+
+  <section>
+    <h2>所有在线的 agent</h2>
+    <div class="sess" id="sess"></div>
+  </section>
+
+  <section>
+    <h2>连接</h2>
+    <div id="lights"></div>
+    <div class="cmd" id="reconnRow" hidden><button class="btn" id="reconn">重连</button>
+      <span class="sub" style="color:var(--mute);font-size:12px">插件没消失，断的只是到终端的连接</span></div>
+  </section>
+
+  <section>
+    <h2>设置</h2>
+    <label class="sw-row">
+      <span class="txt">高保真模式<div class="sub">需要时用浏览器级真实输入，应付严格的站点和富文本编辑器；用完自动断开</div></span>
+      <input type="checkbox" class="toggle" id="l2" />
+    </label>
+    <label class="sw-row">
+      <span class="txt">页面标记<div class="sub">被操作的页面带彩色描边、光标和小头像；录屏演示时可以关掉</div></span>
+      <input type="checkbox" class="toggle" id="mark" />
+    </label>
+  </section>
+</main>
+
+<footer>连不上时在终端跑 <code style="padding:1px 5px">npx huahaimaker-chrome doctor</code>，它会告诉你卡在哪一步。</footer>
+
+<script type="module" src="panel.js"></script>
+</html>

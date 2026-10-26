@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>huahaimaker-chrome 装好了</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f5f5f4; --card: #fff; --ink: #1c1917; --mute: #78716c; --line: rgba(0,0,0,.08);
+    --soft: rgba(0,0,0,.045); --ok: #16a34a; --accent: #ea580c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141414; --card: #1e1e1e; --ink: #f2f2f2; --mute: #a1a1aa; --line: rgba(255,255,255,.09);
+            --soft: rgba(255,255,255,.06); --ok: #22c55e; --accent: #fb923c; }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 15px/1.7 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .page { max-width: 640px; margin: 0 auto; padding: 56px 16px 64px; }
+  .hero { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+  .hero img { width: 56px; height: 56px; border-radius: 50%; }
+  h1 { margin: 0; font-size: 24px; letter-spacing: .3px; }
+  .hero p { margin: 2px 0 0; color: var(--mute); }
+  ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px;
+       display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; }
+  .n { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 13px;
+       font-weight: 600; background: var(--soft); color: var(--mute); grid-row: span 2; }
+  li.done .n { background: var(--ok); color: #fff; }
+  h3 { margin: 0; font-size: 16px; }
+  .d { color: var(--mute); font-size: 14px; }
+  .cmd { display: flex; gap: 8px; margin-top: 10px; align-items: stretch; }
+  code { flex: 1; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--soft);
+         padding: 9px 12px; border-radius: 9px; word-break: break-all; }
+  button { font: inherit; font-size: 13px; border: 0; border-radius: 9px; padding: 0 14px; cursor: pointer;
+           background: var(--accent); color: #fff; font-weight: 600; flex: none; }
+  .live { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 13.5px; color: var(--mute); }
+  .live .dot { width: 9px; height: 9px; border-radius: 50%; background: #a8a29e; animation: wait 1.4s ease-in-out infinite; }
+  .live.ok { color: var(--ok); font-weight: 600; }
+  .live.ok .dot { background: var(--ok); animation: none; }
+  @keyframes wait { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+  .foot { margin-top: 24px; color: var(--mute); font-size: 13px; }
+  a { color: var(--accent); }
+</style>
+
+<div class="page">
+  <div class="hero">
+    <img src="icons/icon128.png" alt="" />
+    <div>
+      <h1>扩展装好了，还差一步</h1>
+      <p>huahaimaker-chrome 让你的 AI agent 用这个浏览器干活，带着你已有的全部登录。</p>
+    </div>
+  </div>
+
+  <ol>
+    <li class="done">
+      <span class="n">✓</span>
+      <h3>浏览器扩展</h3>
+      <div class="d">已经装好了。</div>
+    </li>
+
+    <li id="step2">
+      <span class="n">2</span>
+      <h3>在终端里跑一行，接上你的 agent</h3>
+      <div class="d">它会自动找到你电脑上装着的 AI agent，逐个配好。需要先装 <a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a>（20 以上）。
+        <div class="cmd"><code id="cmd">npx -y huahaimaker-chrome@latest install</code><button id="copy">复制</button></div>
+        <div class="live" id="live"><span class="dot"></span><span id="livetxt">等待本地端连上…（agent 第一次用它时会自动拉起）</span></div>
+      </div>
+    </li>
+
+    <li>
+      <span class="n">3</span>
+      <h3>对你的 agent 说一句</h3>
+      <div class="d">重启 agent 后，试试这样说：
+        <div class="cmd"><code id="say">用 huahaimaker-chrome 打开小红书，看看我最近一篇笔记的数据</code><button id="copy2">复制</button></div>
+      </div>
+    </li>
+
+    <li>
+      <span class="n">4</span>
+      <h3>想看它在做什么，点工具栏的头像</h3>
+      <div class="d">侧栏会显示它正在操作哪一页、准备做什么、刚刚做了什么。建议把图标固定到工具栏：点地址栏右边的拼图图标，再点 huahaimaker-chrome 旁边的图钉。</div>
+    </li>
+  </ol>
+
+  <div class="foot">卡住了？在终端跑 <code style="padding:2px 6px">npx huahaimaker-chrome doctor</code>，它会告诉你卡在哪一步。</div>
+</div>
+
+<script src="welcome.js"></script>
+</html>
