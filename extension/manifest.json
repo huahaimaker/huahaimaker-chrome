@@ -3,7 +3,7 @@
   "name": "huahaimaker-chrome",
   "version": "1.3.0",
   "description": "让任何支持 MCP 的 AI agent 操控你自己的 Chrome，带着全部登录态。",
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq6xRqEwG4yTuHRG1Zah3j//T3B72XnazyZ+9fOCa5P4bBLPmNBN7YAGL5WnjtPVJefXT9r2Ol0qvNztayDG3dMjK6AZoWccgKa5rhxcvWgFUjanXtmBBQ0qgYwNhuEJSkdinLLtyUg6YmK7Mn72NWpfa/NfqNHdK5AHslvvtJ50iQAYmabl2Nd3vOJ9DxtLBt8a2DfoGPWizgEB3+gkqm2PB8LywwwoiGKd7acr1wZEWmWK9/s0YWdzIstjlvk5AO5XFn6EtEzW8tAAOwBka9239pcyj0kEogWctHLJn7p9VFru38r+I1USyGn6u9XQ68n9edWddxBYokETCqEMT9QIDAQAB",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAloWtawXhNKBCewQWL1oM1IlNZFWW/P/xHuWsdMxQZL7igiegq9V3dDZcLCDBJXNVsU2oGjptF2EsN8OpgDTpif/FrvD6U5qTNTp72gcyuxNGpQa1IeJlyQG7hVCAX6y0YbSXo0ySPahA1zmangWG5c6fnjO4VXKovXUliQggdnqmkNXP3YESLM1YRbqbg2P8ATN7BtK3Kgh8OEtyPX7u7vqNbeQcSpqtF54x15QeyAgQdaRX8PlQe+wAxIn2GTXIFHiFnhFVVEIZlFG7hYp6vNEdjmKHMYVFgrIAYFM+mJHytN2uWQRWyquTd/tSRT7O3qx4AFbH0Dptep59eYHJOwIDAQAB",
   "minimum_chrome_version": "116",
   "background": {
     "service_worker": "background.js",
