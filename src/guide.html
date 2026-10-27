@@ -223,7 +223,7 @@ svg text.b{font-weight:700}
     <div>
       <h2>终端那边已经配好了，<br>只差浏览器这一下。</h2>
       <p class="lead">你的 agent 刚刚替你写完了 MCP 配置。剩下的只有一件事：把 Chrome 扩展装上。装上之后它会自动连上本机的桥，你的 agent 就能操控你自己日常在用的这个 Chrome——带着全部登录态。</p>
-      <p class="lead" style="margin-top:10px">下面三步，约 40 秒。每一步都配了图，图上圈出来的地方就是你要点的地方。</p>
+      <p class="lead" style="margin-top:10px">下面四步，约一分钟。每一步都配了图，图上圈出来的地方就是你要点的地方。</p>
     </div>
     <aside class="enclosed">
       <div class="hd"><span class="tag">随附清单 · Enclosed</span><span class="rule"></span><span class="tag">{{AGENT_COUNT}}</span></div>
@@ -233,93 +233,116 @@ svg text.b{font-weight:700}
   </section>
 
   <!-- ============ SEC.01 装扩展 ============ -->
-  <div class="sec"><span class="no">SEC.01</span><h3>装上扩展</h3><span class="rule"></span><span class="meta">3 STEPS · ≈40s</span></div>
+  <div class="sec"><span class="no">SEC.01</span><h3>装上扩展</h3><span class="rule"></span><span class="meta">4 STEPS · ≈1min</span></div>
+
+    <div class="substeps">
+
+      <div class="sub">
+        <div class="sno">01</div>
+        <div class="fig">
+          <svg viewBox="0 0 236 104" role="img" aria-label="在地址栏粘贴 chrome://extensions">
+            <text class="m s" x="8" y="18">地址栏 · 只能你自己粘</text>
+            <rect class="fw ln" x="8" y="32" width="220" height="34" rx="4"/>
+            <circle class="ln2" cx="28" cy="49" r="7"/>
+            <text class="m" x="46" y="53">chrome://extensions</text>
+            <path class="ac" d="M8 78 H126"/>
+          </svg>
+        </div>
+        <h5>打开扩展管理页</h5>
+        <p class="note">网页不许直接跳 <span class="mono">chrome://</span> 开头的地址，只能你自己粘进地址栏。Edge 用 <span class="mono">edge://extensions</span>，Brave 用 <span class="mono">brave://extensions</span>。</p>
+        <div class="act"><button class="btn btn-ghost" data-copy="chrome://extensions"><span class="lbl">复制地址</span></button></div>
+      </div>
+
+      <div class="sub">
+        <div class="sno">02</div>
+        <div class="fig">
+          <svg viewBox="0 0 236 104" role="img" aria-label="打开右上角的开发者模式开关">
+            <rect class="fw ln2" x="8" y="12" width="220" height="80" rx="4"/>
+            <text class="s" x="20" y="40" font-size="12">开发者模式</text>
+            <rect class="fa" x="164" y="26" width="48" height="24" rx="4"/>
+            <circle cx="200" cy="38" r="8" fill="#fffefa"/>
+            <rect class="fg" x="20" y="62" width="120" height="8" rx="2"/>
+            <rect class="fg" x="20" y="76" width="86" height="8" rx="2"/>
+          </svg>
+        </div>
+        <h5>右上角打开「开发者模式」</h5>
+        <p class="note">开关在这一页的右上角。打开它，页面上会多出一行按钮。</p>
+      </div>
+
+      <div class="sub">
+        <div class="sno">03</div>
+        <div class="fig">
+          <svg viewBox="0 0 236 104" role="img" aria-label="点击加载已解压的扩展程序按钮">
+            <rect class="fw ln2" x="8" y="12" width="220" height="80" rx="4"/>
+            <rect class="fw ac" x="16" y="34" width="140" height="28" rx="4"/>
+            <text class="o" x="86" y="52" text-anchor="middle" font-size="11">加载已解压的扩展程序</text>
+            <rect class="ln2" x="164" y="34" width="30" height="28" rx="4"/>
+            <rect class="ln2" x="200" y="34" width="26" height="28" rx="4"/>
+            <path class="fi" d="M96 62 L96 84 L102 78 L106 88 L112 86 L108 76 L115 76 Z"/>
+          </svg>
+        </div>
+        <h5>点「加载已解压的扩展程序」</h5>
+        <p class="note">左起第一颗按钮。点开会弹出文件选择框。</p>
+      </div>
+
+      <div class="sub">
+        <div class="sno">04</div>
+        <div class="fig">
+          <svg viewBox="0 0 236 108" role="img" aria-label="终端打开扩展文件夹，拖到扩展页上">
+            <rect class="fw ln" x="8" y="6" width="220" height="40" rx="4"/>
+            <text class="m" x="16" y="22" style="font-size:10px">$ npx huahaimaker-chrome \</text>
+            <text class="m" x="16" y="38" style="font-size:10px">    extension --reveal</text>
+            <path class="ln" d="M14 60 H42 L47 66 H94 V96 H14 Z"/>
+            <text class="m s" x="54" y="84" text-anchor="middle" font-size="8">extension</text>
+            <path class="ac" d="M106 78 H146 M138 71 L146 78 L138 85"/>
+            <rect class="fw ac" x="156" y="56" width="72" height="44" rx="4"/>
+            <text class="o" x="192" y="75" text-anchor="middle" font-size="9">扩展管理页</text>
+            <text class="m s" x="192" y="90" text-anchor="middle" font-size="8">拖到这里</text>
+          </svg>
+        </div>
+        <h5>把扩展文件夹拖进来</h5>
+        <p class="note">回终端跑 <span class="mono">npx huahaimaker-chrome extension --reveal</span>，扩展文件夹会在访达 / 资源管理器里被选中。把它拖到扩展管理页上就装好了；或者在第 03 步弹出的选择框里选中它。这一页不放路径——它在你自己的终端里。</p>
+        <div class="act"><button class="btn btn-ghost" data-copy="npx huahaimaker-chrome extension --reveal"><span class="lbl">复制命令</span></button></div>
+      </div>
+
+    </div>
+    <p class="warn" style="margin-bottom:22px">扩展 ID 固定为 <span class="mono">{{EXT_ID}}</span>。改过扩展代码或升级了版本的话，回 <span class="mono">chrome://extensions</span> 点一次「重新加载」，再刷新目标页面。</p>
 
   <div class="steps">
 
-    <!-- 01 -->
-    <article class="card">
-      <div class="cno"><b>01</b><span class="f">FIG.1.1</span></div>
-      <div class="fig">
-        <svg viewBox="0 0 326 176" role="img" aria-label="Chrome 应用商店里的 huahaimaker-chrome 页面">
-          <rect class="fw ln" x="7" y="9" width="312" height="158" rx="4"/>
-          <path class="ln2" d="M7 45H319"/>
-          <circle class="fl" cx="24" cy="27" r="3.5"/><circle class="fl" cx="37" cy="27" r="3.5"/><circle class="fl" cx="50" cy="27" r="3.5"/>
-          <rect class="ln2" x="66" y="17" width="238" height="20" rx="4"/>
-          <text class="m s" x="76" y="31">chromewebstore.google.com/…</text>
-          <rect class="fw ln" x="26" y="62" width="274" height="86" rx="4"/>
-          <text class="b" x="88" y="86">huahaimaker-chrome</text>
-          <text class="m s" x="88" y="103">扩展程序 · huahaimaker</text>
-          <rect class="fa" x="186" y="112" width="98" height="26" rx="4"/>
-          <text class="w" x="235" y="129" text-anchor="middle" font-size="12">添加至 Chrome</text>
-          <path class="fi" d="M170 118 L170 142 L176 136 L180 147 L186 145 L182 134 L189 134 Z"/>
-          <path class="fw" d="M170 118 L170 142 L176 136 L180 147 L186 145 L182 134 L189 134 Z" fill="none" stroke="#fffefa" stroke-width="1.5"/>
-        </svg>
-        <div class="pin" style="left:12.9%;top:41.5%;width:12.6%;aspect-ratio:1"></div>
-      </div>
-      <h4>打开商店页</h4>
-      <p class="note">点下面这个按钮，商店页在新标签页里打开。认准发布者是 <span class="mono">huahaimaker</span>、图标是右边这朵小花。</p>
-      <div class="act">
-        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/foiljmaplphdfimfcnfdpekhdnfbgfbf" target="_blank" rel="noopener">添加至 Chrome ↗</a>
-        <p class="urlline">chromewebstore.google.com/detail/foiljmaplphdfimfcnfdpekhdnfbgfbf</p>
-      </div>
-    </article>
-
-    <!-- 02 -->
-    <article class="card">
-      <div class="cno"><b>02</b><span class="f">FIG.1.2</span></div>
-      <div class="fig">
-        <svg viewBox="0 0 326 176" role="img" aria-label="Chrome 的添加扩展确认弹窗">
-          <rect class="fp ln2" x="7" y="9" width="312" height="34" rx="4"/>
-          <rect class="ln2" x="250" y="18" width="16" height="16" rx="3"/>
-          <rect class="ln2" x="276" y="18" width="16" height="16" rx="3"/>
-          <path class="ln2" d="M258 26h0"/>
-          <path class="fw" d="M262 46 L270 56 L254 56 Z"/>
-          <path class="ln" d="M254 56 L262 46 L270 56"/>
-          <rect class="fw ln" x="36" y="56" width="254" height="102" rx="4"/>
-          <text class="b" x="52" y="80">要添加「huahaimaker-chrome」吗？</text>
-          <rect class="fg" x="52" y="92" width="176" height="7" rx="3"/>
-          <rect class="fg" x="52" y="106" width="140" height="7" rx="3"/>
-          <rect class="fa" x="52" y="124" width="112" height="26" rx="4"/>
-          <text class="w" x="108" y="141" text-anchor="middle" font-size="12">添加扩展程序</text>
-          <rect class="ln2" x="176" y="124" width="60" height="26" rx="4"/>
-          <text class="s" x="206" y="141" text-anchor="middle">取消</text>
-        </svg>
-      </div>
-      <h4>点「添加扩展程序」</h4>
-      <p class="note">Chrome 会在右上角弹一个确认框，把它要的权限列给你看。点橙色那颗按钮，几秒就装完了。</p>
-      <div class="act"><p class="note" style="font-size:12.5px;color:var(--ink3)">权限只用于操控你打开的标签页，不上传任何数据。</p></div>
-    </article>
-
-    <!-- 03 -->
-    <article class="card">
-      <div class="cno"><b>03</b><span class="f">FIG.1.3</span></div>
-      <div class="fig">
-        <svg viewBox="0 0 326 176" role="img" aria-label="工具栏图标上的灰点消失">
-          <text class="m s" x="14" y="26">TOOLBAR · 装完之后</text>
-          <rect class="fp ln2" x="14" y="52" width="122" height="56" rx="4"/>
-          <rect class="ln2" x="26" y="66" width="26" height="26" rx="4"/>
-          <circle cx="97" cy="96" r="7.5" fill="#a8a29e" stroke="#fffefa" stroke-width="2.5"/>
-          <text class="s" x="14" y="132">灰点 = 还没连上桥</text>
-          <path class="ln" d="M152 80 H182"/>
-          <path class="ln" d="M174 73 L182 80 L174 87"/>
-          <rect class="fw ac" x="198" y="52" width="114" height="56" rx="4"/>
-          <rect class="ln2" x="210" y="66" width="26" height="26" rx="4"/>
-          <text class="o m" x="198" y="132">在线 · 桥已连上</text>
-          <path class="ac" d="M198 140 H286"/>
-        </svg>
-        <div class="pin grey" style="left:19.9%;top:38.4%;width:9.5%;aspect-ratio:1"></div>
-        <div class="pin" style="left:76.4%;top:38.4%;width:9.5%;aspect-ratio:1"></div>
-      </div>
-      <h4>看工具栏：灰点消失</h4>
-      <p class="note">装好后图标出现在工具栏。图标右下角有灰点，说明还没连上本机的桥；灰点消失、图标恢复正常，就是接通了。</p>
-      <div class="act"><p class="note" style="font-size:12.5px;color:var(--ink3)">图标被 Chrome 收进了拼图菜单？点拼图图标，把 huahaimaker-chrome 钉出来。</p></div>
-    </article>
-
-    <!-- 04 验证 -->
+    <!-- 05 -->
     <article class="card verify">
       <div class="left">
-        <div class="cno"><b>04</b><span class="f">FIG.1.4 · 验证</span></div>
+        <div class="cno"><b>05</b><span class="f">FIG.1.5</span></div>
+        <div class="fig">
+          <svg viewBox="0 0 326 176" role="img" aria-label="工具栏图标上的灰点消失">
+            <text class="m s" x="14" y="26">TOOLBAR · 装完之后</text>
+            <rect class="fp ln2" x="14" y="52" width="122" height="56" rx="4"/>
+            <rect class="ln2" x="26" y="66" width="26" height="26" rx="4"/>
+            <circle cx="97" cy="96" r="7.5" fill="#a8a29e" stroke="#fffefa" stroke-width="2.5"/>
+            <text class="s" x="14" y="132">灰点 = 还没连上桥</text>
+            <path class="ln" d="M152 80 H182"/>
+            <path class="ln" d="M174 73 L182 80 L174 87"/>
+            <rect class="fw ac" x="198" y="52" width="114" height="56" rx="4"/>
+            <rect class="ln2" x="210" y="66" width="26" height="26" rx="4"/>
+            <text class="o m" x="198" y="132">在线 · 桥已连上</text>
+            <path class="ac" d="M198 140 H286"/>
+          </svg>
+          <div class="pin grey" style="left:19.9%;top:38.4%;width:9.5%;aspect-ratio:1"></div>
+          <div class="pin" style="left:76.4%;top:38.4%;width:9.5%;aspect-ratio:1"></div>
+        </div>
+      </div>
+      <div>
+        <h4>看工具栏：灰点消失</h4>
+        <p class="note">装好后图标出现在工具栏。图标右下角有灰点，说明还没连上本机的桥；灰点消失、图标恢复正常，就是接通了。</p>
+        <div class="act"><p class="note" style="font-size:12.5px;color:var(--ink3)">图标被 Chrome 收进了拼图菜单？点拼图图标，把 huahaimaker-chrome 钉出来。</p></div>
+      </div>
+    </article>
+
+    <!-- 06 验证 -->
+    <article class="card verify">
+      <div class="left">
+        <div class="cno"><b>06</b><span class="f">FIG.1.6 · 验证</span></div>
         <div class="fig">
           <svg viewBox="0 0 560 168" role="img" aria-label="终端里 doctor 命令的成功输出">
             <rect x="0" y="0" width="560" height="168" rx="4" fill="#29261e"/>
@@ -357,12 +380,12 @@ svg text.b{font-weight:700}
           <rect class="fp ln" x="6" y="6" width="708" height="428" rx="6"/>
           <circle class="fl" cx="28" cy="30" r="4"/><circle class="fl" cx="44" cy="30" r="4"/><circle class="fl" cx="60" cy="30" r="4"/>
           <!-- 标签组 -->
-          <rect class="fa" x="80" y="16" width="52" height="28" rx="4"/>
-          <text class="w b" x="106" y="35" text-anchor="middle" font-size="14">huahaimaker</text>
-          <rect class="fw ac" x="136" y="14" width="132" height="32" rx="4"/>
-          <text x="152" y="35">小红书后台</text>
-          <rect class="ln2" x="276" y="14" width="160" height="32" rx="4"/>
-          <text class="s" x="292" y="35">你自己的其他标签…</text>
+          <rect class="fa" x="80" y="16" width="96" height="28" rx="4"/>
+          <text class="w b" x="128" y="35" text-anchor="middle" font-size="13">huahaimaker</text>
+          <rect class="fw ac" x="180" y="14" width="132" height="32" rx="4"/>
+          <text x="196" y="35">小红书后台</text>
+          <rect class="ln2" x="320" y="14" width="160" height="32" rx="4"/>
+          <text class="s" x="336" y="35">你自己的其他标签…</text>
           <!-- 内容区 + 四边描边 -->
           <rect x="16" y="60" width="688" height="364" rx="4" fill="#fffefa" stroke="#f97316" stroke-width="3"/>
           <!-- 浮条 -->
@@ -390,8 +413,8 @@ svg text.b{font-weight:700}
           <rect x="546" y="363" width="124" height="10" rx="2" fill="#57534e"/>
           <!-- 圆标 -->
           <g>
-            <circle cx="136" cy="14" r="13" fill="#29261e" stroke="#f6f4ee" stroke-width="2"/>
-            <text class="m w b" x="136" y="18" text-anchor="middle" font-size="12">A</text>
+            <circle cx="180" cy="14" r="13" fill="#29261e" stroke="#f6f4ee" stroke-width="2"/>
+            <text class="m w b" x="180" y="18" text-anchor="middle" font-size="12">A</text>
           </g>
           <g>
             <circle cx="16" cy="60" r="13" fill="#29261e" stroke="#f6f4ee" stroke-width="2"/>
@@ -424,96 +447,13 @@ svg text.b{font-weight:700}
     </div>
   </div>
 
-  <!-- ============ 附录 A ============ -->
-  <div class="sec" style="margin-top:52px"><span class="no">APPENDIX</span><h3>附录</h3><span class="rule"></span><span class="meta">A. 手动加载 · B. 规格对比</span></div>
-
-  <details>
-    <summary>
-      <span class="apx">附录 A</span>
-      <span class="ttl">开发者手动加载</span>
-      <span class="sig">商店打不开，或者你已经 clone 了仓库——四步，看图就够</span>
-      <span class="pm"></span>
-    </summary>
-    <div class="apxbody">
-      <div class="substeps">
-
-        <div class="sub">
-          <div class="sno">A.1</div>
-          <div class="fig">
-            <svg viewBox="0 0 236 104" role="img" aria-label="在地址栏粘贴 chrome://extensions">
-              <text class="m s" x="8" y="18">地址栏 · 只能你自己粘</text>
-              <rect class="fw ln" x="8" y="32" width="220" height="34" rx="4"/>
-              <circle class="ln2" cx="28" cy="49" r="7"/>
-              <text class="m" x="46" y="53">chrome://extensions</text>
-              <path class="ac" d="M8 78 H126"/>
-            </svg>
-          </div>
-          <h5>打开扩展管理页</h5>
-          <p class="note">网页不许直接跳 <span class="mono">chrome://</span> 开头的地址，只能你自己粘进地址栏。Edge 用 <span class="mono">edge://extensions</span>，Brave 用 <span class="mono">brave://extensions</span>。</p>
-          <div class="act"><button class="btn btn-ghost" data-copy="chrome://extensions"><span class="lbl">复制地址</span></button></div>
-        </div>
-
-        <div class="sub">
-          <div class="sno">A.2</div>
-          <div class="fig">
-            <svg viewBox="0 0 236 104" role="img" aria-label="打开右上角的开发者模式开关">
-              <rect class="fw ln2" x="8" y="12" width="220" height="80" rx="4"/>
-              <text class="s" x="20" y="40" font-size="12">开发者模式</text>
-              <rect class="fa" x="164" y="26" width="48" height="24" rx="4"/>
-              <circle cx="200" cy="38" r="8" fill="#fffefa"/>
-              <rect class="fg" x="20" y="62" width="120" height="8" rx="2"/>
-              <rect class="fg" x="20" y="76" width="86" height="8" rx="2"/>
-            </svg>
-          </div>
-          <h5>右上角打开「开发者模式」</h5>
-          <p class="note">开关在这一页的右上角。打开它，页面上会多出一行按钮。</p>
-        </div>
-
-        <div class="sub">
-          <div class="sno">A.3</div>
-          <div class="fig">
-            <svg viewBox="0 0 236 104" role="img" aria-label="点击加载已解压的扩展程序按钮">
-              <rect class="fw ln2" x="8" y="12" width="220" height="80" rx="4"/>
-              <rect class="fw ac" x="16" y="34" width="140" height="28" rx="4"/>
-              <text class="o" x="86" y="52" text-anchor="middle" font-size="11">加载已解压的扩展程序</text>
-              <rect class="ln2" x="164" y="34" width="30" height="28" rx="4"/>
-              <rect class="ln2" x="200" y="34" width="26" height="28" rx="4"/>
-              <path class="fi" d="M96 62 L96 84 L102 78 L106 88 L112 86 L108 76 L115 76 Z"/>
-            </svg>
-          </div>
-          <h5>点「加载已解压的扩展程序」</h5>
-          <p class="note">左起第一颗按钮。点开会弹出文件选择框。</p>
-        </div>
-
-        <div class="sub">
-          <div class="sno">A.4</div>
-          <div class="fig">
-            <svg viewBox="0 0 236 108" role="img" aria-label="终端打开扩展文件夹，拖到扩展页上">
-              <rect class="fw ln" x="8" y="6" width="220" height="40" rx="4"/>
-              <text class="m" x="16" y="22" style="font-size:10px">$ npx huahaimaker-chrome \</text>
-              <text class="m" x="16" y="38" style="font-size:10px">    extension --reveal</text>
-              <path class="ln" d="M14 60 H42 L47 66 H94 V96 H14 Z"/>
-              <text class="m s" x="54" y="84" text-anchor="middle" font-size="8">extension</text>
-              <path class="ac" d="M106 78 H146 M138 71 L146 78 L138 85"/>
-              <rect class="fw ac" x="156" y="56" width="72" height="44" rx="4"/>
-              <text class="o" x="192" y="75" text-anchor="middle" font-size="9">扩展管理页</text>
-              <text class="m s" x="192" y="90" text-anchor="middle" font-size="8">拖到这里</text>
-            </svg>
-          </div>
-          <h5>把扩展文件夹拖进来</h5>
-          <p class="note">回终端跑 <span class="mono">npx huahaimaker-chrome extension --reveal</span>，扩展文件夹会在访达 / 资源管理器里被选中。把它拖到扩展管理页上就装好了；或者在 A.3 弹出的选择框里选中它。这一页不放路径——它在你自己的终端里。</p>
-          <div class="act"><button class="btn btn-ghost" data-copy="npx huahaimaker-chrome extension --reveal"><span class="lbl">复制命令</span></button></div>
-        </div>
-
-      </div>
-      <p class="warn">手动加载的扩展 ID 和商店版一致：<span class="mono">{{EXT_ID}}</span>。装完同样回终端跑一次 <span class="mono">npx huahaimaker-chrome doctor</span>。改过扩展代码的话，回 <span class="mono">chrome://extensions</span> 点一次「重新加载」，再刷新目标页面。</p>
-    </div>
-  </details>
+  <!-- ============ 附录 ============ -->
+  <div class="sec" style="margin-top:52px"><span class="no">APPENDIX</span><h3>附录</h3><span class="rule"></span><span class="meta">规格对比</span></div>
 
   <!-- ============ 附录 B 规格表 ============ -->
   <details open>
     <summary>
-      <span class="apx">附录 B</span>
+      <span class="apx">附录</span>
       <span class="ttl">规格对比：为什么是它</span>
       <span class="sig">同类方案在七条硬指标上的差别</span>
       <span class="pm"></span>

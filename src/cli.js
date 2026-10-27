@@ -346,17 +346,14 @@ function probe(info) {
 function printExtension() {
   const dir = path.join(ROOT, 'extension');
   console.log(`
-装扩展有两条路：
+装扩展（手动加载）：
 
-  A. 商店一键装（推荐）：https://chromewebstore.google.com/detail/foiljmaplphdfimfcnfdpekhdnfbgfbf
+  1. Chrome 打开  chrome://extensions ，右上角打开「开发者模式」
+  2. 把这个文件夹拖到那一页上（或点「加载已解压的扩展程序」选中它）：
 
-  B. 手动加载（改过扩展代码、或商店打不开时）
-     1. Chrome 打开  chrome://extensions ，右上角打开「开发者模式」
-     2. 把这个文件夹拖到那一页上（或点「加载已解压的扩展程序」选中它）：
+     ${dir}
 
-        ${dir}
-
-        加 --reveal 会直接在访达 / 资源管理器里选中它，拖过去就行。
+     加 --reveal 会直接在访达 / 资源管理器里选中它，拖过去就行。
 
 装好后扩展会自动连桥。跑 huahaimaker-chrome doctor 应该看到「Chrome 扩展在线」
 `);

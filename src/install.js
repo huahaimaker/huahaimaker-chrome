@@ -210,7 +210,8 @@ export async function install({ yes = true, only = null } = {}) {
 
 function printExtensionStep() {
   console.log('\n还差一步：装 Chrome 扩展');
-  console.log(`  商店一键安装：${STORE_URL}`);
+  console.log('  Chrome 打开 chrome://extensions → 右上角开「开发者模式」→ 把扩展文件夹拖进去');
+  console.log('  跑 `huahaimaker-chrome extension --reveal` 会在访达 / 资源管理器里选中那个文件夹');
   console.log('  （浏览器不允许脚本代装扩展，这一下必须你自己点；引导页里有图）');
 }
 
@@ -269,10 +270,9 @@ export function extensionId() {
 // ---------- 扩展引导页 ----------
 //
 // 模板住在 src/guide.html（设计稿见 design-demos/，2026-09-09 选定「说明书」方向）。
-// 这一页给的是「agent 替他跑完 install 之后弹出来的那个人」看的：主路径是商店
-// 一键安装，开发者手动加载收在附录里。页面里**不放任何本机绝对路径**——
+// 这一页给的是「agent 替他跑完 install 之后弹出来的那个人」看的。还没上架商店，
+// 主路径是手动加载。页面里**不放任何本机绝对路径**——
 // 手动加载那步让用户回终端跑 `extension --reveal`，文件夹自己在访达里选中。
-const STORE_URL = 'https://chromewebstore.google.com/detail/foiljmaplphdfimfcnfdpekhdnfbgfbf';
 
 function writeGuide(rows = []) {
   const dir = path.join(os.tmpdir(), 'huahaimaker-chrome');
@@ -303,8 +303,7 @@ function writeGuide(rows = []) {
     .replaceAll('{{SITE_COUNT}}', sites ? String(sites) : '二十多')
     .replaceAll('{{AGENT_COUNT}}', `${ok} / ${rows.length}`)
     .replaceAll('{{AGENT_ROWS}}', agentRows)
-    .replaceAll('{{AGENT_FOOT}}', esc(foot))
-    .replaceAll('https://chromewebstore.google.com/detail/foiljmaplphdfimfcnfdpekhdnfbgfbf', STORE_URL);
+    .replaceAll('{{AGENT_FOOT}}', esc(foot));
   fs.writeFileSync(file, html);
   return file;
 }

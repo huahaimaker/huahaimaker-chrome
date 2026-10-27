@@ -99,6 +99,10 @@ npx huahaimaker-chrome install
 已配过的自动跳过；只想看不想写加 `--dry-run`），然后弹出引导页带你装扩展——
 **装扩展这一下必须你自己点，浏览器不允许脚本代劳**。
 
+扩展暂未上架 Chrome 应用商店，先手动加载：Chrome 打开 `chrome://extensions` →
+右上角开「开发者模式」→ 把扩展文件夹拖进去（`npx huahaimaker-chrome extension --reveal`
+会在访达 / 资源管理器里选中它）。
+
 **它认得出哪些 agent**，分三层：
 
 1. **已知表** —— `src/agents.json` 列了 20 个：Claude Code、Codex CLI、Cursor、
@@ -557,5 +561,5 @@ You can also see it working: controlled tabs join a colored tab group, the page 
 outline, a breathing cursor and a small cockpit — all of which are invisible to the agent's own
 screenshots, so it never mistakes our overlay for a page element.
 
-**Install**: `npx huahaimaker-chrome install`, then click through the extension install (browsers do not
-let scripts do that part). Verify with `npx huahaimaker-chrome doctor`.
+**Install**: `npx huahaimaker-chrome install`, then load the extension unpacked: open `chrome://extensions`, turn on Developer mode, and drag in the
+folder that `npx huahaimaker-chrome extension --reveal` shows (not on the Chrome Web Store yet). Verify with `npx huahaimaker-chrome doctor`.

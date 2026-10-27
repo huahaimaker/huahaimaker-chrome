@@ -12,7 +12,7 @@ test('次版本落后分清是哪一边', () => {
   assert.equal(compat({ ext: '1.2.1', cli: '1.3.0' }), 'ext-old');
   assert.equal(compat({ ext: '1.3.0', cli: '1.2.1' }), 'cli-old');
   assert.match(compatNote('cli-old', { ext: '1.3.0', cli: '1.2.1' }), /huahaimaker-chrome@latest install/);
-  assert.match(compatNote('ext-old', { ext: '1.2.1', cli: '1.3.0' }), /自动更新/);
+  assert.match(compatNote('ext-old', { ext: '1.2.1', cli: '1.3.0' }), /重新加载/);
 });
 
 test('协议号不同才是真不兼容，哪怕版本号一样', () => {
