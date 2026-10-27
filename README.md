@@ -512,11 +512,7 @@ huahaimaker-chrome/
 
 ## 许可证
 
-MIT License © [huahaimaker](https://github.com/huahaimaker)
-
-<br>
-
-</div>
+MIT License © [huahaimaker](https://github.com/huahaimaker)。本项目基于 [huashu-chrome](https://github.com/alchaincyf/huashu-chrome)（MIT）修改，原版权声明保留在 [LICENSE](LICENSE) 里。
 
 ---
 
