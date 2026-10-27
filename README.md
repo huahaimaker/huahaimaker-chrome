@@ -84,7 +84,7 @@ CLI 是入口（install / mcp / doctor），MCP server 是 agent 的接口，本
 | 验证码、扫码、付款交还给人 | ✅ `ask` 工具，付款闸在扩展里 | ✅ 遇到就暂停 | ⚠️ 只确认敏感动作 | ❌ | ❌ | ⚠️ 云端版才有 |
 | 看得见谁在控哪一页 | ✅ 标签组＋描边＋侧栏 | ✅ 彩色标签组 | ？官方未说明 | ⚠️ 按客户端命名标签组 | ❌ | ⚠️ 标题加个标记 |
 
-核查日期 2026-09-09，每一格都对着官方文档或官方仓库填的，完整八方案矩阵和每格来源见
+核查日期 2026-10-27，每一格都对着官方文档或官方仓库填的，完整八方案矩阵和每格来源见
 [docs/对比.md](docs/对比.md)。两句公道话：Playwright MCP 的扩展模式也能拿到登录态、
 也有按客户端隔离，它缺的是站点经验和人工交接；Claude in Chrome 遇到验证码也会停下等你，
 它的问题是只给 Anthropic 自家客户端用。
@@ -116,7 +116,7 @@ npx huahaimaker-chrome install
    这不是任意MCP客户端的通用安装器：OpenCode使用顶层`mcp`与命令数组，当前不支持自动写入，见下方手动配置。
 3. **都不匹配** —— 打印该填的 JSON，你自己贴。
 
-**OpenCode手动配置**：依据[官方MCP文档](https://opencode.ai/docs/mcp-servers/)与[配置文档](https://opencode.ai/docs/config/)（2026-09-25核对），在现有全局配置`~/.config/opencode/opencode.json`或`opencode.jsonc`的`mcp`对象中合并以下条目，保留已有设置。实际配置位置以当前OpenCode版本及环境变量为准。
+**OpenCode手动配置**：依据[官方MCP文档](https://opencode.ai/docs/mcp-servers/)与[配置文档](https://opencode.ai/docs/config/)（2026-10-27核对），在现有全局配置`~/.config/opencode/opencode.json`或`opencode.jsonc`的`mcp`对象中合并以下条目，保留已有设置。实际配置位置以当前OpenCode版本及环境变量为准。
 
 ```json
 {
@@ -512,7 +512,7 @@ huahaimaker-chrome/
 
 ## 许可证
 
-MIT — 随便用，随便改，随便造。
+MIT — 随便用，随便改，随便造。本项目基于 [huashu-chrome](https://github.com/alchaincyf/huashu-chrome)（MIT）修改，原版权声明保留在 [LICENSE](LICENSE) 里。
 
 ---
 
